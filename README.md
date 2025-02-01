@@ -28,4 +28,4 @@ Every screenshot should have some text explaining what the screenshot is about.
 
 ![adproject-network-diagram](https://github.com/user-attachments/assets/d47fdf38-669e-4452-ab0c-c6fc44962f0e)
 
-Ref 1: Network Diagram - Shows how each VM will be configured. NAT network used in VirtualBox to allow inter communication between VMs.
+Ref 1: Network Diagram
