@@ -22,9 +22,6 @@ In total there were 4 VMs. A VM running Windows 10 with Splunk forwarding and Sy
 - ART (AtomicRedTeam) to start gaining experience in Mitre Att&ck framework.
 
 ## Steps
-drag & drop screenshots here or use imgur and reference them using imgsrc
-
-Every screenshot should have some text explaining what the screenshot is about.
 
 ![adproject-network-diagram](https://github.com/user-attachments/assets/d47fdf38-669e-4452-ab0c-c6fc44962f0e)
 
