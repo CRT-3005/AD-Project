@@ -33,91 +33,99 @@ The lab consisted of four virtual machines:
 
 ![adproject-network-diagram](https://github.com/user-attachments/assets/d47fdf38-669e-4452-ab0c-c6fc44962f0e)
 
-Ref 1: Network Diagram
+**Figure 1 – Lab Network Topology:** Four VirtualBox VMs — Splunk Server, Active Directory, Windows 10 Client, and Kali Linux — connected via NAT for attack simulation and log analysis.
 
 ![00-installer-config yaml](https://github.com/user-attachments/assets/9114d4eb-ec00-475f-a53b-b45f239f2cd1)
 
-Ref 2: Splunk network config
+**Figure 2 - Splunk Server Network Configuration:** Static IP set on Splunk server as per network diagram. Default gatway configured for NAT network. Google DNS used as no DNS server setup for this lab.
 
 ![ip -a Splunk](https://github.com/user-attachments/assets/b885d029-8f0e-4871-8ad3-d0dc5f6ff317)
 
-Ref 3: Network config applied
+**Figure 3 – Splunk Server IP Verification:** Output from ip -a confirming the Splunk server is using the static IP address 192.168.10.10/24 as configured.
 
 ![splunk-login-page](https://github.com/user-attachments/assets/9e32575c-ccff-4008-aa21-ace79b00d572)
 
-Ref 4: Testing Splunk GUI access from client machine
+**Figure 4 – Splunk Web Interface Access:** Successful connection to the Splunk Enterprise GUI from the Windows 10 client machine, confirming network and service availability.
 
 ![ADDC Settings](https://github.com/user-attachments/assets/62151b93-3197-4502-9e30-9c8b71e49c81)
 
-Ref 5: AD Local Server Setup
+**Figure 5 – Active Directory Server Configuration:** Properties of ADDC01 showing it is joined to the ADProject.local domain with the correct static IP address 192.168.10.7.
 
 ![IT User](https://github.com/user-attachments/assets/eba3b8cd-b971-4558-a000-65e9ec6f6dc7)
 
-Ref 6: IT User
+**Figure 6 - AD Group 1:** IT OU created and user added into AD.
 
 ![HR User](https://github.com/user-attachments/assets/87dbcc38-cbb9-40de-a7ba-24fdc04ee66e)
 
-Ref 7: HR User
+**Figure 7 - AD Group 2:** HR OU created and user added into AD.
 
 ![inputs conf](https://github.com/user-attachments/assets/86a9d416-9373-4cd6-bd50-fdde22dcbc7c)
 
-Ref 8: Creating new variant of inputs.conf for Splunk index (Client Machine)
+**Figure 8 - input.conf:** New variant of inputs.conf created for Splunk index (Client Machine). The Splunk Universal Forwader will push the events listed in this file over to the Splunk server. This was also setup on the DC as you will see with Figure 13 where two hosts appear in the Splunk logs.
 
 ![inputs conf location](https://github.com/user-attachments/assets/05440b99-c07d-41f2-861c-64f1bc632237)
 
-Ref 9: New location for inputs.conf
+**Figure 9 - input.conf location change:** Defualt location for inputs.conf is C:\Program Files\SplunkUniversalForwarder\etc\system\default which needs to stay as is. A new inputs.conf file was created in C:\Program Files\SplunkUniversalForwarder\etc\local which Splunk will look to. Note that anytime the inputs.conf file is changed the Universal Forward service needs to be restarted.
+
+<img width="575" height="314" alt="image" src="https://github.com/user-attachments/assets/d44f7807-b992-4ac4-bb5d-f62e2c5d8ba0" />
+
+**Figure 10 - Splunk Forwarder:** Within the SplunkForwarder service the Log On tab needs to be changed to use Local System Account otherwise it will not have all the required permissions.
 
 ![endpoint-index](https://github.com/user-attachments/assets/407d2de4-fce4-401d-968d-b621dee412b8)
 
-Ref 10: endpoint index created
+**Figure 11 - endpoint index created:** In Figure 8 the inputs.conf file has the index listed as endpoint. This has to be created within Splunk otherwise the logs will not show.
 
 ![receiving-9997](https://github.com/user-attachments/assets/51bbd9ba-8525-47f8-97cf-df6842d00275)
 
-Ref 11: Receiving data port setup
+**Figure 12 - Setting up receiving port in Splunk:** By default the port for receiving logs is 9997 and this is what is used in this lab. 
 
 ![endpoints-pc-ad](https://github.com/user-attachments/assets/c37888c2-1a91-4ed0-8525-ed6647dc91d8)
 
-Ref 12: Both endpoints showing events
+**Figure 13 - Confirming hosts visile in Splunk:** Both the DC and the client are forwarding logs into Splunk.
 
 ![rdp-win10-client](https://github.com/user-attachments/assets/b075f969-92e6-4db3-a1f0-a6528bda2280)
 
-Ref 13: Enabling RDP on client machine (to help with brute force attack)
+**Figure 14 - Enabling RDP on client machine:** By enabling RDP this will help with the next steps where the brute force attack comes into play.
 
 ![rockyou-passwords-list](https://github.com/user-attachments/assets/e3ff7c98-3b11-4b1f-9125-7f60ec18c081)
 
-Ref 14: Beginning to use Crowbar and generating passwords file for brute force attack
+**Figure 15 - Crowbar:** Beginning to use Crowbar and generating passwords file for brute force attack
 
 ![adding-password](https://github.com/user-attachments/assets/110429e8-2b22-45c3-8716-1bb141de78be)
 
-Ref 15: Example passwords file
+**Figure 16 - Password file**: This is the example password file that will be used for the 
 
 ![SplunkEventJNeutron](https://github.com/user-attachments/assets/f9597e96-491f-4ded-8cba-c86f5dc38cf9)
 
-Ref 16: Searching specifically for JNeutron user logs
+**Figure 17 - JNeutron logs:** Searching specifically for JNeutron user logs
 
 ![EventCode4625](https://github.com/user-attachments/assets/a8e3661b-7b7a-4024-8a6a-745bdeadf047)
 
-Ref 17: Event ID referencing failed login attempts
+**Figure 18 - Failed login attemps:** Event ID referencing failed login attempts
 
 ![FailedLoginAttempts](https://github.com/user-attachments/assets/4e902508-2b82-4f3a-b6a9-c760f76d544e)
 
-Ref 18: Telemetry for failed login attempts
+**Figure 19 - Splunk logs for failed login attempts:** Telemetry for failed login attempts
 
 ![FullEventLogBruteForce](https://github.com/user-attachments/assets/6799dea0-1fa4-4e0a-a882-f4ece2bac066)
 
-Ref 19: Full brute force security log
+**Figure 20 - Brute Force Splunk logs:** Kali machine used to brute force the password with Crowbar. Spunk logs verify the attempts showing 'Unknown username or bad password' and logs show the IP of the Kali machine which is where these attempts are originating from.
 
 ![InstallingART](https://github.com/user-attachments/assets/f099f10c-9ebd-4ea7-9524-6f6f3c20f92f)
 
-Ref 20: ART
+**Figure 21 - Installing Atomic Red Team:** Installed Atomic Red Team via PowerShell using the official script from Red Canary. Included NuGet provider setup and confirms successful installation of Invoke-AtomicTest for executing atomic tests.
 
 ![AtomicTestT1136 001-LocalUser](https://github.com/user-attachments/assets/9505a5c6-e3b3-4255-b4b4-1ffedd728ff1)
 
-Ref 21: ART Persistence 1136.001 creating local account
+**Figure 22 - : T1136.001:** Demonstrates multiple methods of local account creation using Command Prompt, PowerShell, and .NET, aligned with MITRE ATT&CK T1136.001. Includes both standard and administrator account creation, highlighting detection challenges across techniques.
 
 ![DetectingT1136 001-NewLocalUser](https://github.com/user-attachments/assets/49fd45ab-7914-4ecc-b1e5-9c2e1fab6d6f)
 
-Ref 22: Detecting local account creation in Splunk
+**Figure 23 - Local account detection:** The Splunk logs now show creation of the new account. This would help in real life scenarios by alerting to a potential breach in a network.
 
-
+## Outcomes
+- Successfully built a working AD environment with Splunk monitoring
+- Simulated real-world brute force and persistence attacks
+- Verified detection of attacker activity via SIEM
+- Gained hands-on experience with both defensive and offensive security tools
 
