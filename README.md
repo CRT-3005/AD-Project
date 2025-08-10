@@ -2,24 +2,32 @@
 
 ## Objective
 
-This Project aimed to create a basic AD environment, utilise the user accounts to perform attacks on from Kali and have Splunk configured to generate telemetry from the target machines. 
-In total there were 4 VMs. A VM running Windows 10 with Splunk forwarding and Sysmon configured on. A VM running Windows Server machine running AD which also had Splunk forwarding and Sysmon configured on. A VM running Ubunutu which was configured for Splunk. Finally a VM running Kali Linux.
+The goal of this project was to create a basic Active Directory (AD) environment, simulate attacks from Kali Linux, and configure Splunk to collect and analyze telemetry from target machines.
+The lab consisted of four virtual machines:
+
+- **Windows 10 Client:** Splunk Universal Forwarder + Sysmon
+- **Windows Server:** Active Directory Domain Services (ADDS) + Splunk Forwarder + Sysmon
+- **Ubuntu Server:** Splunk Enterprise (SIEM)
+- **Kali Linux:** Attack platform
 
 ## Skills Learned
 
-- Ability to setup ADDS.
-- How to setup a SIEM on Ubuntu server.
-- Configuring Splunk/Sysmon forwarding from target machines.
-- Understanding of generating and reading network logs.
-- Start to understand common attacker trends.
+- Setting up Active Directory Domain Services (ADDS)
+- Installing and configuring Splunk on Ubuntu Server
+- Forwarding logs from endpoints to a SIEM
+- Configuring Sysmon for enhanced telemetry
+- Analyzing and interpreting network logs
+- Recognizing common attacker techniques
+- Conducting brute force attacks for testing SIEM detection
 
 ## Tools Used
+- **VirtualBox** – VM creation and NAT network setup
+- **Active Directory Domain Services (ADDS)** – Domain and user account creation
+- **Splunk Enterprise** – Log ingestion and analysis
+- **Sysmon** – Windows system monitoring
+- **Crowbar** – Brute force attack tool
+- **Atomic Red Team (ART)** – MITRE ATT&CK simulation framework
 
-- ViurtalBox for setting up VM enviroment and creating a NAT network.
-- ADDS for domain setup and user creating.
-- SIEM system for log ingestion and analysis.
-- Crowbar to generate brute force attack.
-- ART (AtomicRedTeam) to start gaining experience in Mitre Att&ck framework.
 
 ## Steps
 
