@@ -28,6 +28,17 @@ The lab consisted of four virtual machines:
 - **Crowbar** – Brute force attack tool
 - **Atomic Red Team (ART)** – MITRE ATT&CK simulation framework
 
+## Workflow Overview
+1. Install Windows Server 2022 and configure it as a Domain Controller.
+2. Join a Windows 10 client to the Active Directory domain.
+3. Create users, groups, and organizational units within Active Directory.
+4. Install Splunk Universal Forwarders on both VMs.
+5. Forward logs (Security, System, Application) to Splunk.
+6. Build dashboards in Splunk to visualize AD activity.
+7. Simulate basic attack scenarios (e.g., brute force, privilege escalation).
+8. Capture and analyze events in Splunk.
+9. Configure alerts in Splunk based on suspicious activity.
+10. Document manual review and response actions.
 
 ## Steps
 
