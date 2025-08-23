@@ -3,8 +3,8 @@
 ## Objective
 
 The goal of this project was to create a basic Active Directory (AD) environment, simulate attacks from Kali Linux, and configure Splunk to collect and analyze telemetry from target machines.
-The lab consisted of four virtual machines:
 
+## Lab Environment
 - **Windows 10 Client:** Splunk Universal Forwarder + Sysmon
 - **Windows Server:** Active Directory Domain Services (ADDS) + Splunk Forwarder + Sysmon
 - **Ubuntu Server:** Splunk Enterprise (SIEM)
